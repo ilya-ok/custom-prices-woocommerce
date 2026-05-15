@@ -1,0 +1,171 @@
+/* ============================================================
+   Custom Prices — Multisite Bulk Edit Admin Styles
+   ============================================================ */
+
+/* Секции */
+.ms-section {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	margin: 20px 0;
+	padding: 20px;
+}
+
+.ms-section h2 {
+	margin-top: 0;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+
+/* Заголовок с выбором категории */
+.ms-bulk-header {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.ms-bulk-header label {
+	font-weight: 600;
+}
+
+.ms-bulk-header select {
+	min-width: 300px;
+}
+
+.ms-count {
+	color: #646970;
+	font-size: 13px;
+}
+
+.ms-loading {
+	color: #646970;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Таблица товаров */
+.ms-products-table {
+	margin-top: 15px;
+}
+
+.ms-products-table th {
+	background: #f0f0f1;
+	font-weight: 600;
+}
+
+.ms-products-table td {
+	vertical-align: middle;
+}
+
+.ms-products-table input[type="number"],
+.ms-products-table input[type="text"] {
+	width: 100%;
+	max-width: 120px;
+}
+
+.ms-products-table select {
+	width: 100%;
+}
+
+/* Колонки */
+.ms-col-img {
+	width: 60px;
+}
+
+.ms-col-name {
+	min-width: 200px;
+}
+
+.ms-col-sku {
+	min-width: 100px;
+}
+
+.ms-col-num {
+	width: 120px;
+}
+
+.ms-col-type {
+	width: 140px;
+}
+
+.ms-col-txt {
+	width: 100px;
+}
+
+.ms-col-actions {
+	width: 180px;
+	text-align: center;
+}
+
+/* Изображение товара */
+.ms-product-img {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.ms-product-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Статус сохранения */
+.ms-save-status {
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 13px;
+}
+
+/* Пустое состояние */
+.ms-empty {
+	padding: 40px;
+	text-align: center;
+	color: #646970;
+	font-style: italic;
+}
+
+/* Список сайтов */
+.ms-sites-list {
+	list-style: none;
+	margin: 15px 0;
+	padding: 0;
+}
+
+.ms-sites-list li {
+	padding: 8px 12px;
+	background: #f0f0f1;
+	margin-bottom: 5px;
+	border-left: 3px solid #2271b1;
+}
+
+.ms-site-url {
+	color: #646970;
+	font-size: 13px;
+	margin-left: 5px;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 782px) {
+	.ms-bulk-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.ms-bulk-header select {
+		width: 100%;
+	}
+
+	.ms-products-table {
+		font-size: 13px;
+	}
+
+	.ms-col-img {
+		display: none;
+	}
+}

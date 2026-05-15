@@ -1,0 +1,508 @@
+/* ============================================================
+   Custom Prices — Массовое редактирование (admin)
+   ============================================================ */
+
+/* --- Шапка: label + select категории --- */
+.cp-bulk-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid #ccd5dc;
+    border-radius: 4px;
+}
+
+.cp-bulk-header label {
+    font-weight: 600;
+    white-space: nowrap;
+    color: #23282d;
+}
+
+.cp-bulk-header select {
+    min-width: 320px;
+    max-width: 500px;
+    padding: 6px 10px;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* Счётчик товаров рядом с select */
+.cp-count {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+/* --- Таблица товаров --- */
+.cp-products-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cp-products-table th {
+    font-size: 12px;
+    text-align: left;
+    white-space: nowrap;
+    padding: 8px 6px;
+    border-bottom: 2px solid #e1e1e1;
+    color: #23282d;
+    font-weight: 600;
+}
+
+.cp-products-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.cp-products-table tbody tr:hover {
+    background: #f7f9fa;
+}
+
+/* --- Столбец: изображение --- */
+.cp-col-img {
+    width: 64px;
+}
+
+.cp-product-img img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+/* --- Столбец: имя товара --- */
+.cp-col-name {
+    min-width: 140px;
+}
+
+.cp-product-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.cp-col-name strong {
+    display: inline;
+    font-size: 14px;
+    color: #23282d;
+}
+
+.cp-product-link {
+    color: #0073aa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cp-product-link:hover {
+    color: #005177;
+    text-decoration: underline;
+}
+
+.cp-edit-link {
+    font-size: 11px;
+    color: #50575e;
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #f0f0f1;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.cp-edit-link:hover {
+    background: #dcdcde;
+    color: #2c3338;
+}
+
+.cp-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* --- Столбец: select (тип цены) --- */
+.cp-col-type {
+    width: 105px;
+}
+
+.cp-col-type select {
+    width: 100%;
+    padding: 5px 4px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 13px;
+    background: #fff;
+}
+
+/* --- Столбцы: числовые поля --- */
+.cp-col-num {
+    width: 82px;
+}
+
+.cp-col-num input {
+    width: 74px;
+    padding: 5px 4px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.cp-col-num input:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* --- Столбец: текстовое поле (единицы измерения) --- */
+.cp-txt {
+    width: 80px;
+}
+
+.cp-txt input {
+    width: 74px;
+    padding: 5px 4px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.cp-txt input:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* --- Столбец: действия (кнопка + статус) --- */
+.cp-col-actions {
+    width: 130px;
+    white-space: nowrap;
+}
+
+.cp-save-btn {
+    padding: 5px 12px !important;
+    font-size: 13px !important;
+}
+
+.cp-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Индикатор статуса сохранения */
+.cp-save-status {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 8px;
+    min-width: 68px;
+    font-weight: 600;
+}
+
+.cp-status-loading {
+    color: #666;
+}
+
+.cp-status-done {
+    color: #27ae60;
+}
+
+.cp-status-error {
+    color: #d63638;
+}
+
+/* --- Состояния: пустой список, загрузка, ошибка --- */
+.cp-empty,
+.cp-loading,
+.cp-error {
+    padding: 20px 0;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+.cp-error {
+    color: #d63638;
+    font-style: normal;
+}
+
+/* Spinner рядом с "Загрузка товаров…" */
+.cp-loading::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: cp-spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes cp-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Панель массовых операций
+   ============================================================ */
+
+.cp-bulk-operations {
+    background: #fff;
+    border: 1px solid #ccd5dc;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.cp-bulk-operations h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #23282d;
+}
+
+.cp-bulk-operations .description {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 13px;
+}
+
+.cp-bulk-form {
+    margin-top: 16px;
+}
+
+.cp-form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cp-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cp-form-field label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #23282d;
+    margin-bottom: 6px;
+}
+
+.cp-form-field select,
+.cp-form-field input[type="number"] {
+    padding: 6px 10px;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.cp-form-field input[type="number"] {
+    min-width: 150px;
+}
+
+.cp-form-field input[type="number"]:focus,
+.cp-form-field select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.cp-value-hint {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 13px;
+    color: #666;
+    font-weight: 600;
+}
+
+#cp-apply-bulk-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    height: auto !important;
+}
+
+#cp-apply-bulk-btn .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.cp-bulk-status {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    background: #f0f6fc;
+    border-left: 4px solid #0073aa;
+}
+
+.cp-bulk-status .cp-status-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #23282d;
+}
+
+.cp-bulk-status.cp-status-loading {
+    background: #f0f6fc;
+    border-left-color: #0073aa;
+}
+
+.cp-bulk-status.cp-status-done {
+    background: #e7f5ec;
+    border-left-color: #27ae60;
+}
+
+.cp-bulk-status.cp-status-done .cp-status-text {
+    color: #27ae60;
+}
+
+.cp-bulk-status.cp-status-error {
+    background: #fce7e7;
+    border-left-color: #d63638;
+}
+
+.cp-bulk-status.cp-status-error .cp-status-text {
+    color: #d63638;
+}
+
+.cp-bulk-example {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #f7f9fa;
+    border-left: 4px solid #666;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #23282d;
+}
+
+.cp-bulk-example strong {
+    color: #0073aa;
+    margin-right: 8px;
+}
+
+/* ============================================================
+   Панель массового редактирования полей
+   ============================================================ */
+
+.cp-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cp-fields-grid .cp-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cp-fields-grid .cp-form-field label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #23282d;
+    margin-bottom: 6px;
+}
+
+.cp-fields-grid .cp-form-field select,
+.cp-fields-grid .cp-form-field input[type="text"],
+.cp-fields-grid .cp-form-field input[type="number"] {
+    padding: 6px 10px;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cp-fields-grid .cp-form-field input:focus,
+.cp-fields-grid .cp-form-field select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.cp-hint {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.cp-form-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+#cp-apply-fields-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    height: auto !important;
+}
+
+#cp-apply-fields-btn .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.cp-bulk-note {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #856404;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.cp-bulk-note .dashicons {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #ffc107;
+}
+
+.cp-bulk-note strong {
+    color: #856404;
+    margin-right: 4px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .cp-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cp-form-field select,
+    .cp-form-field input[type="number"] {
+        min-width: 100%;
+    }
+}

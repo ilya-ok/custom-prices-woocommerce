@@ -1,0 +1,110 @@
+/**
+ * custom-prices.css — стили плагина Custom Prices WooCommerce.
+ *
+ * Секции:
+ *  .custom-tabs          — jQuery UI Tabs: РРЦ/ОПТ и Рулон/Отрез
+ *  .width-selection      — radio-кнопки выбора ширины рулона
+ *  .error-block          — сообщение «Выберите ширину» (красный текст)
+ *  .total-price/.total-volume/.total-square — блоки «Итого», «Объём», «Площадь»
+ *  .cart-preloader       — полноэкранный прелоадер при обновлении корзины
+ *  .loader               — анимация вращения (spinner)
+ *  .add-to-cart-ajax     — кнопка «В корзину» с loader/checkmark
+ *  .cart-total-custom    — блок «Итого: N руб.» в корзине
+ */
+
+/* === Табы РРЦ/ОПТ и Рулон/Отрез === */
+.custom-tabs {
+    margin: 20px 0;
+}
+.custom-tabs ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+.custom-tabs li {
+    margin-right: 10px;
+}
+.custom-tabs .ui-tabs-panel {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+/* === Выбор ширины рулона (radio-кнопки) === */
+.width-selection {
+    margin-top: 10px;
+}
+.width-selection label {
+    margin-right: 10px;
+}
+/* Ошибка: «Выберите ширину» — отображается красным, скрывается JS после выбора */
+.error-block {
+    display: inline-block;
+    margin-left: 5px;
+}
+/* === Блоки итогов (обновляются JS в реальном времени) === */
+.totals-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.total-price, .total-volume, .total-square {
+    font-weight: 400;
+}
+.total-price span, .total-volume span, .total-square span {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000;
+}
+/* === Полноэкранный прелоадер при обновлении корзины === */
+.cart-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader {
+    font-size: 20px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* === Кнопка «В корзину»: checkmark после успешного добавления === */
+.add-to-cart-ajax .checkmark {
+    margin-left: 5px;
+    color: green;
+}
+/* === Таблица корзины: выравнивание и отступы === */
+.woocommerce table.shop_table th, .woocommerce table.shop_table td {
+    padding: 10px;
+    text-align: center;
+}
+/* === Блок «Итого» в корзине === */
+.cart-total-custom {
+    text-align: right;
+    margin-top: 20px;
+}
+/* === Мобильные метки цен (--desktop / --mobile модификаторы) === */
+.file_wrap-weght--mobile,
+.product-popup__meta-weght--mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .file_wrap-weght--desktop,
+    .product-popup__meta-weght--desktop {
+        display: none;
+    }
+    .file_wrap-weght--mobile,
+    .product-popup__meta-weght--mobile {
+        display: block;
+    }
+}
