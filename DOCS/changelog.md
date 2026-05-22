@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.4.6 — 2026-05-22
+
+### Переименование и вынос меню
+
+**Network Admin:**
+- Пункт меню "Цены Multisite" переименован в **"Custom Prices"** (иконка `dashicons-money-alt`)
+
+**Site Admin:**
+- Страницы плагина вынесены из-под меню WooCommerce в отдельный верхний пункт **"Custom Prices"** (иконка `dashicons-money-alt`)
+- Структура: Custom Prices → Массовое редактирование / Настройки
+
+**Файлы:**
+- `includes/class-custom-prices-multisite-bulk-edit.php` — slug меню `cp-ms-bulk-edit`, label → "Custom Prices"
+- `includes/class-custom-prices-bulk-edit.php` — новый `add_menu_page` со slug `custom-prices`, убран родитель `woocommerce`
+- `includes/class-custom-prices-settings.php` — родитель изменён с `woocommerce` на `custom-prices`
+
+---
+
 ## v1.4.5 — 2026-04-22
 
 ### custom-opt single: totals-row на странице товара

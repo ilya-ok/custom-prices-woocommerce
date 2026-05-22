@@ -50,11 +50,11 @@ class Custom_Prices_Multisite_Bulk_Edit {
 	public function add_menu_page() {
 		add_menu_page(
 			__( 'Массовое редактирование цен', 'custom-prices-woocommerce' ),
-			__( 'Цены Multisite', 'custom-prices-woocommerce' ),
+			__( 'Custom Prices', 'custom-prices-woocommerce' ),
 			'manage_network',
 			'cp-ms-bulk-edit',
 			array( $this, 'render_page' ),
-			'dashicons-tag',
+			'dashicons-money-alt',
 			56
 		);
 	}

@@ -27,12 +27,22 @@ class Custom_Prices_Bulk_Edit {
     /* ------------------------------------------------------------------ */
 
     public function add_page() {
+        add_menu_page(
+            __( 'Custom Prices', 'custom-prices-woocommerce' ),
+            __( 'Custom Prices', 'custom-prices-woocommerce' ),
+            'manage_woocommerce',
+            'custom-prices',
+            [$this, 'render_page'],
+            'dashicons-money-alt',
+            57
+        );
+
         add_submenu_page(
-            'woocommerce',
+            'custom-prices',
             __( 'Массовое редактирование цен', 'custom-prices-woocommerce' ),
             __( 'Массовое редактирование', 'custom-prices-woocommerce' ),
             'manage_woocommerce',
-            'custom-prices-bulk-edit',
+            'custom-prices',
             [$this, 'render_page']
         );
     }
@@ -42,7 +52,7 @@ class Custom_Prices_Bulk_Edit {
     /* ------------------------------------------------------------------ */
 
     public function enqueue_assets( $hook ) {
-        if ( 'woocommerce_page_custom-prices-bulk-edit' !== $hook ) {
+        if ( 'toplevel_page_custom-prices' !== $hook ) {
             return;
         }
 

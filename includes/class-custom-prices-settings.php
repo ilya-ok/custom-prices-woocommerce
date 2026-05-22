@@ -56,9 +56,9 @@ class Custom_Prices_Settings {
      */
     public function add_settings_page() {
         add_submenu_page(
-            'woocommerce',
+            'custom-prices',
             __('Настройки Custom Prices', 'custom-prices-woocommerce'),
-            __('Custom Prices', 'custom-prices-woocommerce'),
+            __('Настройки', 'custom-prices-woocommerce'),
             'manage_woocommerce',
             'custom-prices-settings',
             [$this, 'settings_page_callback']
