@@ -43,26 +43,20 @@ if (!defined('ABSPATH')) {
 }
 
 class Custom_Prices_Settings {
-    public function __construct() {
-        // Регистрируем подменю WooCommerce
-        add_action('admin_menu', [$this, 'add_settings_page']);
-        // Регистрируем поля и секции через WP Settings API
-        add_action('admin_init', [$this, 'register_settings']);
+
+    private static $instance = null;
+
+    public static function get_instance(): self {
+        if ( null === self::$instance ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
-    /**
-     * Добавляет подменю «Custom Prices» в WooCommerce.
-     * Доступ — роль manage_woocommerce (WC managers и выше).
-     */
-    public function add_settings_page() {
-        add_submenu_page(
-            'custom-prices',
-            __('Настройки Custom Prices', 'custom-prices-woocommerce'),
-            __('Настройки', 'custom-prices-woocommerce'),
-            'manage_woocommerce',
-            'custom-prices-settings',
-            [$this, 'settings_page_callback']
-        );
+    private function __construct() {
+        // Подменю регистрируется в Custom_Prices_Bulk_Edit::add_page()
+        // Регистрируем поля и секции через WP Settings API
+        add_action('admin_init', [$this, 'register_settings']);
     }
 
     /**

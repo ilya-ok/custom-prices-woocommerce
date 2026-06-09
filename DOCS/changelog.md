@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.4.7 — 2026-06-09
+
+### Исправлено
+- Страница «Настройки» в меню Custom Prices давала 404 (`/wp-admin/custom-prices-settings`) — WordPress генерировал неверный URL, когда `Custom_Prices_Settings` регистрировал подменю до того, как `Custom_Prices_Bulk_Edit` создавал родительское меню `custom-prices`
+- Исправление: `Custom_Prices_Settings` сделан Singleton (`get_instance()`), регистрация подменю перенесена в `Custom_Prices_Bulk_Edit::add_page()` — сразу после `add_menu_page`, гарантируя что родитель уже существует
+
+**Файлы:**
+- `includes/class-custom-prices-settings.php` — стал Singleton, `add_action('admin_menu')` удалён из конструктора
+- `includes/class-custom-prices-bulk-edit.php` — в `add_page()` добавлена регистрация подменю настроек
+- `includes/class-custom-prices-woocommerce.php` — `new Custom_Prices_Settings()` заменён на `Custom_Prices_Settings::get_instance()`
+
+---
+
 ## v1.4.6 — 2026-05-22
 
 ### Переименование и вынос меню

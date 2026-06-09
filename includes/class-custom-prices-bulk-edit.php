@@ -45,6 +45,15 @@ class Custom_Prices_Bulk_Edit {
             'custom-prices',
             [$this, 'render_page']
         );
+
+        add_submenu_page(
+            'custom-prices',
+            __( 'Настройки Custom Prices', 'custom-prices-woocommerce' ),
+            __( 'Настройки', 'custom-prices-woocommerce' ),
+            'manage_woocommerce',
+            'custom-prices-settings',
+            [ Custom_Prices_Settings::get_instance(), 'settings_page_callback' ]
+        );
     }
 
     /* ------------------------------------------------------------------ */

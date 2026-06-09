@@ -18,7 +18,7 @@ class Custom_Prices_Woocommerce {
         new Custom_Prices_Frontend();    // Цены и формы на фронтенде
         new Custom_Prices_Cart();        // Модификация корзины
         new Custom_Prices_Ajax();        // AJAX-обработчики
-        new Custom_Prices_Settings();    // Страница глобальных настроек
+        Custom_Prices_Settings::get_instance(); // Страница глобальных настроек
 
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
