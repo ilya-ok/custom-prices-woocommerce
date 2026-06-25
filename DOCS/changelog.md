@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.8 — 2026-06-24
+
+### Исправлено
+
+- Удалено подключение `magnific-popup.css` и `jquery.magnific-popup.min.js` — файлы отсутствовали на сервере и давали 404
+
+**Файл:** `includes/class-custom-prices-woocommerce.php`
+
+---
+
 ## v1.4.7 — 2026-06-09
 
 ### Исправлено

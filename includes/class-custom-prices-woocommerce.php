@@ -65,10 +65,6 @@ class Custom_Prices_Woocommerce {
             wp_enqueue_script('custom-prices-js', plugin_dir_url(__DIR__) . 'assets/js/custom-prices.js', ['jquery', 'jquery-ui-tabs'], '1.0.9', true);
             wp_enqueue_style('custom-prices-css', plugin_dir_url(__DIR__) . 'assets/css/custom-prices.css', [], '1.0.9');
 
-            // Magnific Popup — модальный попап товара на листинге и попап для PDF
-            wp_enqueue_style('magnific-popup', plugin_dir_url(__DIR__) . 'assets/css/magnific-popup.css', [], '1.1.0');
-            wp_enqueue_script('magnific-popup', plugin_dir_url(__DIR__) . 'assets/js/jquery.magnific-popup.min.js', ['jquery'], '1.1.0', true);
-
             // pdfMake — генерация PDF коммерческого предложения на клиентской стороне
             wp_enqueue_script('pdfmake', plugin_dir_url(__FILE__) . '../assets/js/pdfmake/pdfmake.min.js', ['jquery'], '1.17', true);
             wp_enqueue_script('vfs_fonts', plugin_dir_url(__FILE__) . '../assets/js/pdfmake/vfs_fonts.js', ['jquery'], '1.17', true);
